@@ -17,14 +17,18 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     color: '#3c44b1',
   },
+  pageTitle: {
+    paddingLeft: theme.spacing(4),
+    '& .MuiTypography-subtitle2': { opacity: '0.6' },
+  },
 }));
 const PageHeader = ({ icon, title, subTitle }) => {
   const classes = useStyles();
   return (
     <Paper elevation={0} square className={classes.root}>
       <div className={classes.pageHeader}>
-        <Card>{icon}</Card>
-        <div>
+        <Card className={classes.pageIcon}>{icon}</Card>
+        <div className={classes.pageTitle}>
           <Typography variant="h6" component="div">
             {title}
           </Typography>

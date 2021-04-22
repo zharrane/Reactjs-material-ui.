@@ -6,7 +6,7 @@ const style = {
     flexDirection: 'column',
     position: 'absolute',
     left: '0',
-    width: '320px',
+    width: '150px',
     height: '100%',
     backgroundColor: '#253053',
   },
@@ -24,7 +24,7 @@ const style = {
 
 const SideMenu = (props) => {
   const { classes } = props;
-  return <div className={classes.sideMenu}>SideMenu</div>;
+  return <div className={classes.sideMenu}></div>;
 };
 
 export default withStyles(style)(SideMenu);

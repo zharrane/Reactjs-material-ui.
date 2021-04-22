@@ -6,10 +6,10 @@ import {
 } from '@material-ui/core';
 import './App.css';
 import Header from './components/Header';
-import PageHeader from './components/PageHeader';
 import SideMenu from './components/SideMenu';
-import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
+import Employees from './pages/employees/Employees';
 
+//My own theme
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -24,11 +24,21 @@ const theme = createMuiTheme({
       default: '#f4f5fd',
     },
   },
+  overrides: {
+    MuiAppBar: {
+      root: {
+        transform: 'translateZ(0)',
+      },
+    },
+  },
+  shape: {
+    borderRadius: '12px',
+  },
 });
 
 const useStyles = makeStyles({
   appMain: {
-    paddingLeft: '320px',
+    paddingLeft: '150px',
     width: '100%',
   },
 });
@@ -39,11 +49,8 @@ function App() {
       <SideMenu />
       <div className={classes.appMain}>
         <Header />
-        <PageHeader
-          title="title"
-          subTitle="sub title"
-          icon={<PeopleOutlineIcon />}
-        />
+
+        <Employees />
       </div>
       <CssBaseline />
     </ThemeProvider>
