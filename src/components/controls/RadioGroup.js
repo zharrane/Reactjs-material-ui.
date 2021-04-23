@@ -15,6 +15,7 @@ const RadioGroup = (props) => {
       <MuiRadioGroup row name={name} value={value} onChange={onChange}>
         {items.map((item, index) => (
           <FormControlLabel
+            key={index}
             value={item.id}
             control={<Radio />}
             label={item.title}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 const style = {
   sideMenu: {
     display: 'flex',
@@ -8,6 +8,7 @@ const style = {
     left: '0',
     width: '150px',
     height: '100%',
+    minHeight: '100%',
     backgroundColor: '#253053',
   },
 };

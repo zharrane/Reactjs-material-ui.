@@ -40,6 +40,9 @@ const useStyles = makeStyles({
   appMain: {
     paddingLeft: '150px',
     width: '100%',
+    height: '100%',
+    position: 'fixed',
+    overflowY: 'auto',
   },
 });
 function App() {
@@ -49,7 +52,6 @@ function App() {
       <SideMenu />
       <div className={classes.appMain}>
         <Header />
-
         <Employees />
       </div>
       <CssBaseline />

@@ -1,26 +1,42 @@
 import { makeStyles } from '@material-ui/core';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const useForm = (initiaFValue) => {
+const useForm = (initiaFValue, validateOnChange = false, validation) => {
   const [values, setValues] = useState(initiaFValue);
+  const [errors, setErrors] = useState({});
+
   const handleInputChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
     setValues({
       ...values,
       [name]: value,
     });
+    if (validateOnChange) validation({ [name]: value });
   };
+
+  const resetForm = () => {
+    setValues(initiaFValue);
+    setErrors({});
+  };
+
   return {
     values,
+    errors,
+    setErrors,
     setValues,
     handleInputChange,
+    resetForm,
   };
 };
 
 const Form = (props) => {
   const classes = useStyles();
-  return <form className={classes.root}>{props.children}</form>;
+  const { children, ...other } = props;
+  return (
+    <form className={classes.root} autoComplete="off" {...other}>
+      {children}
+    </form>
+  );
 };
 
 const useStyles = makeStyles((theme) => ({
