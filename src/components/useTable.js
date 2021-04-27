@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //** */
-const useTable = (records, headCells) => {
+const useTable = (records, headCells, filterFn) => {
   const classes = useStyles();
 
   //** */
@@ -72,7 +72,7 @@ const useTable = (records, headCells) => {
   //*** */
 
   const recordsAfterPagingAndSorting = () => {
-    return sortThis(records, getComparator(order, orderBy)).slice(
+    return sortThis(filterFn.fn(records), getComparator(order, orderBy)).slice(
       page * rowsPerPage,
       (page + 1) * rowsPerPage
     );
@@ -95,16 +95,23 @@ const useTable = (records, headCells) => {
       <TableHead>
         <TableRow>
           {headCells.map((headCell) => (
-            <TableCell key={headCell.id}>
-              <TableSortLabel
-                active={orderBy === headCell.id}
-                direction={orderBy === headCell.id ? order : 'asc'}
-                onClick={() => {
-                  handleSortRequest(headCell.id);
-                }}
-              >
-                {headCell.label}
-              </TableSortLabel>
+            <TableCell
+              key={headCell.id}
+              sortDirection={orderBy === headCell.id ? order : false}
+            >
+              {headCell.disableSorting ? (
+                headCell.label
+              ) : (
+                <TableSortLabel
+                  active={orderBy === headCell.id}
+                  direction={orderBy === headCell.id ? order : 'asc'}
+                  onClick={() => {
+                    handleSortRequest(headCell.id);
+                  }}
+                >
+                  {headCell.label}
+                </TableSortLabel>
+              )}
             </TableCell>
           ))}
         </TableRow>

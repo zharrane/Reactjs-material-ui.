@@ -26,3 +26,16 @@ export const getAllEmployees = () => {
     department: DEPARTMENTS[emp.departmentId - 1].title,
   }));
 };
+
+export const updateEmployee = (employee) => {
+  let employees = getAllEmployees();
+  let recordIndex = employees.findIndex((x) => x.id === employee.id);
+  employees[recordIndex] = { ...employee };
+  localStorage.setItem(EMPLOYEE_KEY, JSON.stringify(employees));
+};
+
+export const deleteEmployee = (id) => {
+  let employees = getAllEmployees();
+  employees = employees.filter((x) => x.id !== id);
+  localStorage.setItem(EMPLOYEE_KEY, JSON.stringify(employees));
+};
