@@ -5,6 +5,7 @@ import {
   ThemeProvider,
 } from '@material-ui/core';
 import './App.css';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import SideMenu from './components/SideMenu';
 import Employees from './pages/employees/Employees';
@@ -53,7 +54,9 @@ function App() {
       <div className={classes.appMain}>
         <Header />
         <Employees />
+        <Footer />
       </div>
+
       <CssBaseline />
     </ThemeProvider>
   );
