@@ -32,7 +32,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ![Main screen](https://github.com/zharrane/Reactjs-material-ui./blob/master/img/06.png)
 
 ## Demo
-
+Not responsive Yet
 https://zharrane-react-mui.herokuapp.com/
 
 ## notice
